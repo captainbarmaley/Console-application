@@ -2,10 +2,25 @@ from actions import action_check_even, action_palindrome, action_calculator, act
 from history import save_history_to_file, load_history_from_file, clear_history, add_to_history
 from ui import print_header, print_menu
 
+def get_valid_menu_choice(min_choice, max_choice): # Input function
+    while True:
+        choice = input(f"Choose an option ({min_choice}-{max_choice}): ").strip()
+        if choice.isdigit() and min_choice <= int(choice) <= max_choice:
+            return choice
+        elif choice.lower() == "exit":
+            return "exit"
+        else:
+            print(f"Invalid input. Please enter a number between {min_choice} and {max_choice}, or 'exit'.")
+
 def main(): # Main function
     while True:
         print_menu() # Main Menu
-        choice = input("Choose an option: ")
+        choice = get_valid_menu_choice(1, 8)
+        if choice == "exit":
+            print_header("Goodbye!")
+            add_to_history("Exited program.")
+            save_history_to_file()
+            break
         
         try: # Trying to catch exceptions
             if choice == "1":
