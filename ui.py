@@ -1,7 +1,7 @@
 def print_header(title):
-    print("\n" + "="*30)
-    print(title)
-    print("="*30)
+    print("\n" + "=" * 40)
+    print(f"{title.center(40)}")
+    print("=" * 40 + "\n)
 
 def print_menu():
     print("\n=== Menu ===")
